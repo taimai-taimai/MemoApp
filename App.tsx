@@ -7,7 +7,7 @@ import Hello from './src/components/Hello';
 const App = (): React.ReactElement => { 
   return (
     <View style={styles.container}>
-      <Hello bang={true}> World </Hello>
+      <Hello bang={true} style={{fontSize: 16}}> World </Hello>
       <Text>Open up App.tsx to start working on your app!</Text>
       <StatusBar style="auto" />
     </View>

@@ -1,17 +1,19 @@
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, type TextStyle } from 'react-native';
 
 interface Props {
     children: string;
     bang?: boolean;
+    style?: TextStyle;
 }
 
 const Hello = (props: Props): React.ReactElement => {
-    const {children, bang}  = props; // distructual assignment (分割代入): propsの中からchildrenを取り出す
-
+    const {children, bang, style}  = props; // distructual assignment (分割代入): propsの中からchildrenを取り出す
+    
+    // styleをpropsで渡すことで、styleを上書きできる(後のstyleが優先される)
     return (
         <View>
-            <Text style={styles.text}>Hello {children} {bang === true ? '!' : ''} </Text>
+            <Text style={[styles.text, style]}>Hello {children} {bang === true ? '!' : ''} </Text> 
         </View>
     )
 }
