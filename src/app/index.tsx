@@ -7,15 +7,19 @@ const Index = (): React.ReactElement => {
             
             <View>
                 <View>
-                    <Text>Memo AApp</Text>
+                    <Text>Memo App</Text>
                     <Text>ログアウト</Text>
                 </View>
             </View>
             <View> 
 
                 <View>
-                    <View>買い物リスト</View>
-                    <View>2024年07月02日 10:00</View>
+                    <View>
+                        <Text>買い物リスト2</Text>
+                    </View>
+                    <View>
+                        <Text>2024年07月02日 10:00</Text>
+                    </View>
                 </View>
                 <View>
                     <View>
@@ -24,8 +28,12 @@ const Index = (): React.ReactElement => {
                 </View>
 
                 <View>
-                    <View>買い物リスト</View>
-                    <View>2024年07月02日 10:00</View>
+                    <View>
+                        <Text>買い物リスト</Text>
+                    </View>
+                    <View>
+                        <Text>2024年07月02日 10:00</Text>
+                    </View>
                 </View>
                 <View>
                     <View>
@@ -34,8 +42,12 @@ const Index = (): React.ReactElement => {
                 </View>
 
                 <View>
-                    <View>test</View>
-                    <View>2024年07月02日 10:00</View>
+                    <View>
+                        <Text>test</Text>
+                    </View>
+                    <View>
+                        <Text>2024年07月02日 10:00</Text>
+                    </View>
                 </View>
                 <View>
                     <View>
