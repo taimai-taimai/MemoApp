@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const Index = (): React.ReactElement => {
     return (
-        <View>
+        <View style={styles.container}>
             
             <View>
                 <View>
@@ -15,9 +15,7 @@ const Index = (): React.ReactElement => {
 
                 <View>
                     <View>
-                        <Text>買い物リスト2</Text>
-                    </View>
-                    <View>
+                        <Text>買い物リスト</Text>
                         <Text>2024年07月02日 10:00</Text>
                     </View>
                 </View>
@@ -30,8 +28,6 @@ const Index = (): React.ReactElement => {
                 <View>
                     <View>
                         <Text>買い物リスト</Text>
-                    </View>
-                    <View>
                         <Text>2024年07月02日 10:00</Text>
                     </View>
                 </View>
@@ -44,8 +40,6 @@ const Index = (): React.ReactElement => {
                 <View>
                     <View>
                         <Text>test</Text>
-                    </View>
-                    <View>
                         <Text>2024年07月02日 10:00</Text>
                     </View>
                 </View>
@@ -56,8 +50,19 @@ const Index = (): React.ReactElement => {
                 </View>
 
             </View>
+            <View>
+                <Text>+</Text>
+            </View>
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    }
+})
 
 export default Index;
