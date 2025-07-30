@@ -1,19 +1,19 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput, KeyboardAvoidingView} from 'react-native';
 import Header from '../../components/Header';
 import CircleButton from '../../components/CircleButton';
 import Icon from '../../components/icon';
 
 const Edit = (): React.ReactElement => {
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior="height">
             <Header />
-            <View>
-                <TextInput value="買い物リスト"/>
+            <View style={styles.inputContainer}>
+                <TextInput style={styles.input} value={ "買い物リスト\nリスト"} multiline={true}/>
             </View>
             <CircleButton>
                 <Icon name='check' size={40} color='#ffffff' />
             </CircleButton>
-        </View>
+        </KeyboardAvoidingView>
     )
 }
 
@@ -22,6 +22,15 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ffffff',
     },
+    inputContainer: {
+        paddingVertical: 32,
+        paddingHorizontal: 27,
+        flex: 1,
+    },
+    input: {
+        flex: 1,
+        textAlignVertical: 'top',
+    }
 })
 
 export default Edit;
