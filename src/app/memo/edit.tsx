@@ -1,25 +1,18 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
 import Header from '../../components/Header';
-import MemoListItem from '../../components/MomoListItem';
 import CircleButton from '../../components/CircleButton';
 import Icon from '../../components/icon';
 
-
-const Index = (): React.ReactElement => {
+const Edit = (): React.ReactElement => {
     return (
         <View style={styles.container}>
             <Header />
             <View>
-                <MemoListItem />
-                <MemoListItem />
-                <MemoListItem />
+                <TextInput value="買い物リスト"/>
             </View>
             <CircleButton>
-                < Icon name='pencil' size={40} color='#ffffff' />
+                <Icon name='check' size={40} color='#ffffff' />
             </CircleButton>
-
         </View>
     )
 }
@@ -29,7 +22,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#ffffff',
     },
-
 })
 
-export default Index;
+export default Edit;
