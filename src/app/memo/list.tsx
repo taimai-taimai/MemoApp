@@ -5,7 +5,11 @@ import Header from '../../components/Header';
 import MemoListItem from '../../components/MomoListItem';
 import CircleButton from '../../components/CircleButton';
 import Icon from '../../components/icon';
+import { router } from 'expo-router';
 
+const handlePress = (): void => {
+    router.push('/memo/create');
+}
 
 const Index = (): React.ReactElement => {
     return (
@@ -16,8 +20,8 @@ const Index = (): React.ReactElement => {
                 <MemoListItem />
                 <MemoListItem />
             </View>
-            <CircleButton>
-                < Icon name='pencil' size={40} color='#ffffff' />
+            <CircleButton onPress={handlePress}>
+                < Icon name='plus' size={40} color='#ffffff' />
             </CircleButton>
 
         </View>
