@@ -1,15 +1,16 @@
-import { View, StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 type Props = {
     label: string;
+    onPress?: () => void; // 返り値がない関数
 }
 
 const Button = (props: Props): React.ReactElement => {
-    const { label } = props;
+    const { label, onPress } = props;
     return (
-        <View style={styles.button}>
+        <TouchableOpacity onPress={onPress} style={styles.button}>
             <Text style={styles.buttonLabel}>{label}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 
