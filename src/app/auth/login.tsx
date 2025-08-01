@@ -1,7 +1,6 @@
 import { View, StyleSheet, Text, 
     TextInput, TouchableOpacity } from 'react-native';
 import { Link, router } from 'expo-router';
-import Header from '../../components/Header';
 import Button from '../../components/button';
 
 const Login = (): React.ReactElement => {
@@ -13,7 +12,6 @@ const Login = (): React.ReactElement => {
 
     return (
         <View style={styles.container}>
-            <Header />
             <View style={styles.inner}>
                 <Text style={styles.title}>Login</Text>
                 <TextInput style={styles.input} placeholder='Email' />

@@ -1,8 +1,6 @@
 import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { router } from 'expo-router';
-import Header from '../../components/Header';
 import CircleButton from '../../components/CircleButton';
-import { Feather } from '@expo/vector-icons';
 import Icon from '../../components/icon';
 
 const handlePress = (): void => {
@@ -12,7 +10,6 @@ const handlePress = (): void => {
 const Detail = (): React.ReactElement => {
     return (
         <View style={styles.container}>
-            <Header />
             <View style={styles.memoHeader}>
                 <Text style={styles.memoTitle}>買い物リスト</Text>
                 <Text style={styles.memoDate}>2024年07月02日 10:00</Text>
@@ -24,7 +21,7 @@ const Detail = (): React.ReactElement => {
                     本文用なので使い方を間違えると不自然に見えることもありますので要注意。
                 </Text>
             </ScrollView>
-            <CircleButton onPress={handlePress} style={{ top: 160, bottom: 'auto' }}>
+            <CircleButton onPress={handlePress} style={{ top: 60, bottom: 'auto' }}>
                 <Icon name='pencil' size={40} color='#ffffff' />
             </CircleButton>
         </View>

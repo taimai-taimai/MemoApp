@@ -1,7 +1,5 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Feather } from '@expo/vector-icons';
-import Header from '../../components/Header';
 import MemoListItem from '../../components/MomoListItem';
 import CircleButton from '../../components/CircleButton';
 import Icon from '../../components/icon';
@@ -14,7 +12,6 @@ const handlePress = (): void => {
 const Index = (): React.ReactElement => {
     return (
         <View style={styles.container}>
-            <Header />
             <View>
                 <MemoListItem />
                 <MemoListItem />
