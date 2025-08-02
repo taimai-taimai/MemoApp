@@ -7,7 +7,7 @@ const Login = (): React.ReactElement => {
 
     const handlePress = (): void => {
         // ログイン処理
-        router.push('/memo/list');
+        router.replace('/memo/list');
     }
 
     return (
