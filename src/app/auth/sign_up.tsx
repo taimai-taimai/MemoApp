@@ -52,7 +52,7 @@ const SignUp = (): React.ReactElement => {
                 <Button label='Submit' onPress={() => handlePress(email, password)}/>
                 <View style={styles.footer}>
                     <Text style={styles.footerText}>Already registered?</Text>
-                    <Link href='/auth/login' asChild>
+                    <Link href='/auth/login' asChild replace={true}>
                         <TouchableOpacity>
                             <Text style={styles.footerLink}>Log in.</Text>
                         </TouchableOpacity>
