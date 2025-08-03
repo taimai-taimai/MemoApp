@@ -1,18 +1,53 @@
-import { View, StyleSheet, TextInput, KeyboardAvoidingView} from 'react-native';
+import { View, StyleSheet, TextInput, KeyboardAvoidingView, Alert} from 'react-native';
+import { router, useLocalSearchParams } from 'expo-router';
+import { useEffect, useState } from 'react';
+import { doc, getDoc, setDoc, Timestamp } from 'firebase/firestore';
+
 import CircleButton from '../../components/CircleButton';
 import Icon from '../../components/icon';
-import { router } from 'expo-router';
+import { auth, db } from '../../config';
+
+const handlePress = (id: string, bodyText: string): void => {
+    if (auth.currentUser === null) {
+        return;
+    }
+    const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id);
+    setDoc(ref, {
+        bodyText, 
+        updatedAt: Timestamp.now() 
+    }).then(() => {
+        router.back();
+    }).catch((error) => {
+        Alert.alert('メモの保存に失敗しました');
+    });
+
+}
 
 const Edit = (): React.ReactElement => {
-    const handlePress = (): void => {
-        router.back();
-    }
+    const id = useLocalSearchParams().id as string;
+    const [bodyText, setBodyText] = useState<string>('');
+    useEffect(() => {
+        if (auth.currentUser === null) {
+            return;
+        }
+        const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id);
+        getDoc(ref).then((docRef) => {
+            const RemotoBodyText = docRef.data()?.bodyText;
+            setBodyText(RemotoBodyText);
+        })
+    }, [])
+
     return (
         <KeyboardAvoidingView style={styles.container} behavior="height">
             <View style={styles.inputContainer}>
-                <TextInput style={styles.input} value={ "買い物リスト\nリスト"} multiline={true}/>
+                <TextInput 
+                style={styles.input} 
+                value={bodyText} 
+                multiline={true}
+                onChangeText={(text) => setBodyText(text)}
+            />
             </View>
-            <CircleButton onPress={handlePress}>
+            <CircleButton onPress={() => handlePress(id, bodyText)}>
                 <Icon name='check' size={40} color='#ffffff' />
             </CircleButton>
         </KeyboardAvoidingView>
@@ -25,13 +60,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#ffffff',
     },
     inputContainer: {
-        paddingVertical: 32,
-        paddingHorizontal: 27,
         flex: 1,
     },
     input: {
         flex: 1,
+        fontSize: 16,
         textAlignVertical: 'top',
+        paddingVertical: 32,
+        paddingHorizontal: 27,
+        lineHeight: 24,
     }
 })
 

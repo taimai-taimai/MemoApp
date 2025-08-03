@@ -8,23 +8,28 @@ import Icon from '../../components/icon';
 import { auth, db } from '../../config';
 import { type Memo } from '../../../types/memo';
 
-const handlePress = (): void => {
-    router.push('/memo/edit');
+const handlePress = (id: string): void => {
+    router.push({
+        pathname: '/memo/edit',
+        params: {
+            id
+        },
+    });
 }
 
 const Detail = (): React.ReactElement => {
     const [memo, setMemo] = useState<Memo | null>(null);
-    const { id } = useLocalSearchParams();
+    const id = useLocalSearchParams().id as string;
     useEffect(() => {
         if (auth.currentUser === null) {
             return;
         }
-        const ref = doc(db, `users/${auth.currentUser.uid}/memos`, String(id));
+        const ref = doc(db, `users/${auth.currentUser.uid}/memos`, id);
         const unsubscribe = onSnapshot(ref, (memoDoc) => {
             console.log(memoDoc.data());
             const { bodyText, updatedAt } = memoDoc.data() as Memo;
             setMemo({
-                id: memoDoc.id,
+                id,
                 bodyText,
                 updatedAt
             })
@@ -42,7 +47,7 @@ const Detail = (): React.ReactElement => {
                     {memo?.bodyText}
                 </Text>
             </ScrollView>
-            <CircleButton onPress={handlePress} style={{ top: 60, bottom: 'auto' }}>
+            <CircleButton onPress={() => handlePress(id)} style={{ top: 60, bottom: 'auto' }}>
                 <Icon name='pencil' size={40} color='#ffffff' />
             </CircleButton>
         </View>
